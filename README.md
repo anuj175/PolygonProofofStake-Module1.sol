@@ -1,36 +1,75 @@
-Polygon-Advanced-Module-1
-This is the first project in Polygon-Advance, in this project, I was tasked to deploy an NFT collection on the Ethereum blockchain, Map the collection to Polygon, and Transfer assets over via the Polygon Bridge.
+# Polygon-Module 1: Building with Polygon Bridge
 
-Getting Started
-Executing program
-Download the codes by downloading the entire repository which will give you access to other contents of the repository. Navigate to the Poly_Proof project directory, run:
+Deploying an NFT collection on Ethereum and mapping it to Polygon, while also using an image generation tool like DALL-E 2 or Midjourney for the NFT images, is an exciting project. Here's a step-by-step guide on how to achieve this:
 
- npm install
-After installing the dependencies, run the test file by using the following command:
+## Getting Started
 
+### Step 1: Generating the NFT Collection
+
+Use Lexica to generate a 5-item NFT collection. Store the generated NFTs on IPFS and copy the URLs of the IPFS content. Upload the NFT metadata to Pinata Cloud for hosting.
+
+### Step 2: Create and Test the NFT Contract on Ethereum
+
+Create an ERC-721 smart contract on the Ethereum network. Test the contract to ensure it functions as expected.
+
+### Step 3: Set up the Polygon Network
+
+Prepare the environment to deploy and interact with the Polygon network.
+
+### Step 4: Deploy the NFT Contract on Polygon
+
+Deploy the ERC-721 smart contract on the Polygon network.
+
+### Step 5: Map the NFT Collection to Polygon
+
+Associate the NFT collection deployed on Ethereum with the corresponding contract deployed on Polygon. This allows the NFTs to be used on both networks.
+
+### Step 6: Transfer Assets via the Polygon Bridge
+
+Use the Polygon Bridge to transfer the NFT assets from the Ethereum network to the Polygon network.
+
+## Executing Program
+
+To run the project, follow these steps:
+
+1. Clone the repository and open the terminal.
+
+2. Install the required dependencies by running the command:
+
+```shell
+npm install or npm i
+```
+
+3. After installing the dependencies, run the test file using the following command:
+
+```shell
 npx hardhat test
-Deploying the ERC721 Contract
-Before deploying, make sure to rename ".env.example" to ".env" and provide your wallet private key where required i.e. "PRIVATE_KEY= 'your wallet private key'". Run the following command to deploy the ERC721 contract to the Goerli Ethereum Testnet:
+```
 
+## Deploying the ERC721A Contract
+
+Before deploying, rename the file ".env.example" to ".env" and provide your wallet private key where required, i.e., `PRIVATE_KEY='your wallet private key'`. To deploy the ERC721 contract to the Goerli Ethereum Testnet, execute the following command:
+
+```shell
 npx hardhat run scripts/deploy.js --network goerli
-NOTE:
-After deploying the address will generate. So, copy that address into contarctAddress.js(stored in metadata folder) and also in batchMint.js(stored in scripts folder)
+```
 
-The script will deploy the contract
+**NOTE:** After deploying, an address will be generated. Copy that address into `contractAddress.js` (stored in the metadata folder) and also in `batchMint.js` (stored in the scripts folder) as well as in `approveDeposit.js`.
 
-Batch Mint NFTs
-Run the following command to batch-mint NFTs using the deployed ERC721 contract:
+## Batch Mint NFTs
+
+To batch-mint NFTs using the deployed ERC721 contract, run the following command:
+
+```shell
 npx hardhat run scripts/batchMint.js --network goerli
+```
 
- 
 The script will mint the specified number of NFTs and assign them to your address.
 
-Approve and Deposit NFTs to Polygon Mumbai
-Run the following commands to approve and deposit the minted NFTs from Ethereum to the Polygon Mumbai network using the FxPortal Bridge:
+## Approve and Deposit NFTs
 
-npx hardhat run scripts/approvedDeposit.js --network goerli
-Author
-Geet Kiran
+To approve and deposit the minted NFTs from Ethereum to the  network using the FxPortal Bridge, run the following commands:
 
-License
-This project is licensed under the MIT License. You can make a copy of the project to use for your own purposes.
+```shell
+npx hardhat run scripts/approveDeposit.js --network goerli
+```
